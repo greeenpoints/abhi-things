@@ -54,10 +54,10 @@
     "position": 6
   },
   {
-    "title": "Capelli Stool",
-    "image": "assets/images/products/capelli-stool_1782075923.jpg",
-    "link": "https://www.hermanmiller.com/en_lac/products/seating/stools/capelli-stool/",
-    "size": "fill",
+    "title": "Plaud Note",
+    "image": "assets/images/products/plaud-note_1782116524.png",
+    "link": "https://jp.plaud.ai/products/plaud-note-for-referral?variant=42642961825876&country=JP&currency=JPY&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&utm_source=google&utm_medium=ads&utm_campaign=Brand_JP_CV_PR_T1_PM_AO_250811-RMKT-Pmax-ALL&gad_source=1&gad_campaignid=22885024986&gbraid=0AAAAA9XXjEdia7JM00Nx3ykXpVK3ETzgm&gclid=EAIaIQobChMIh-nQl7OalQMV3NMWBR1L9C4EEAQYASABEgL_HPD_BwE",
+    "size": "small",
     "owned": false,
     "column": 1,
     "position": 7
@@ -117,6 +117,15 @@
     "position": 6
   },
   {
+    "title": "HiDock P1 mini",
+    "image": "assets/images/products/hidock-p1-mini_1782116524.jpg",
+    "link": "https://www.hidock.com/products/hidock-p1-mini",
+    "size": "small",
+    "owned": false,
+    "column": 2,
+    "position": 7
+  },
+  {
     "title": "rabbit r1",
     "image": "assets/images/products/rabbit-r1_1782107745.png",
     "link": "https://www.rabbit.tech/rabbit-r1?srsltid=AfmBOorEzTOdkRKUyKH3kP7uPXkRLVBTW5t48PTQnzSLXzt6RmwRZ5Nk",
@@ -171,8 +180,17 @@
     "position": 6
   },
   {
+    "title": "Phone ( 4a ) Pro",
+    "image": "assets/images/products/phone-4a-pro_1782116524.png",
+    "link": "https://jp.nothing.tech/products/phone-4a-pro?srsltid=AfmBOooQ7YMZGMUA3qfz27Y6xlVZPnwKuXVQdMW0nddwCV824fp-2xBp&%E3%82%AB%E3%83%A9%E3%83%BC=Silver&%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8=12%2B256GB",
+    "size": "fill",
+    "owned": false,
+    "column": 3,
+    "position": 7
+  },
+  {
     "title": "Table lamp Nessino Artemide",
-    "image": "assets/images/products/table-lamp-nessino-artemide_1782110133.png",
+    "image": "assets/images/products/table-lamp-nessino-artemide_1782116524.png",
     "link": "https://www.artemide.com/en/subfamily/23264/nessino",
     "size": "small",
     "owned": false,
@@ -225,6 +243,15 @@
     "position": 6
   },
   {
+    "title": "Capelli Stool",
+    "image": "assets/images/products/capelli-stool_1782075923.jpg",
+    "link": "https://www.hermanmiller.com/en_lac/products/seating/stools/capelli-stool/",
+    "size": "fill",
+    "owned": false,
+    "column": 4,
+    "position": 7
+  },
+  {
     "title": "Fellow Ode Brew Grinder Gen2",
     "image": "assets/images/products/fellow-ode-brew-grinder-gen2_1782107745.png",
     "link": "https://jp.kurasu.kyoto/products/ode-brew-grinder-gen2",
@@ -259,5 +286,23 @@
     "owned": false,
     "column": 5,
     "position": 4
+  },
+  {
+    "title": "HiDock H1 Lite",
+    "image": "assets/images/products/hidock-h1-lite_1782116524.jpg",
+    "link": "https://www.hidock.com/products/hidock-h1-lite?utm_source=H1L&utm_medium=Yanko+Design&utm_campaign=HiDock+H1+Lite",
+    "size": "small",
+    "owned": false,
+    "column": 5,
+    "position": 5
+  },
+  {
+    "title": "HiDock P1 AI Voice Recorder",
+    "image": "assets/images/products/hidock-p1-ai-voice-recorder_1782116524.jpg",
+    "link": "https://www.hidock.com/products/hidock-p1-ai-voice-recorder",
+    "size": "small",
+    "owned": false,
+    "column": 5,
+    "position": 6
   }
 ]
