@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual CMS Workspace - Abhi-things</title>
+    <meta name="description" content="Unified Creative CMS for Project Uploading and Drag-and-Drop Reordering">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/reorder.css">
+</head>
+<body class="cms-body">
+
+    <!-- GitHub Sync Settings Drawer -->
+    <div id="gh-drawer" class="settings-drawer">
+        <div class="drawer-header">
+            <h3>GITHUB SYNC INTEGRATION</h3>
+            <button id="close-drawer-btn" class="close-drawer-btn">&times;</button>
+        </div>
+        <div class="drawer-body">
+            <p class="drawer-desc">Enable this to sync your CMS directly with GitHub (ideal for deployment on GitHub Pages/Vercel).</p>
+            
+            <div class="form-group">
+                <label for="gh-owner">REPOSITORY OWNER / USERNAME</label>
+                <input type="text" id="gh-owner" placeholder="e.g., abhibny">
+            </div>
+            
+            <div class="form-group">
+                <label for="gh-repo">REPOSITORY NAME</label>
+                <input type="text" id="gh-repo" placeholder="e.g., abhi-X-2-main">
+            </div>
+
+            <div class="form-group">
+                <label for="gh-branch">BRANCH</label>
+                <input type="text" id="gh-branch" placeholder="main" value="main">
+            </div>
+
+            <div class="form-group">
+                <label for="gh-token">PERSONAL ACCESS TOKEN (PAT)</label>
+                <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+            </div>
+
+            <div class="drawer-actions">
+                <button id="test-gh-btn" class="fetch-action-btn" style="width: 100%; margin-bottom: 10px;">TEST CONNECTION</button>
+                <button id="save-gh-btn" class="create-action-btn" style="width: 100%; margin-top: 0; background-color: var(--colour-copy); color: var(--colour-bg); border-color: var(--colour-copy);">SAVE SETTINGS</button>
+                <button id="clear-gh-btn" class="cancel-edit-btn" style="width: 100%; margin-top: 10px; display: none;">DISCONNECT GITHUB</button>
+            </div>
+            
+            <div id="gh-feedback" class="feedback-box" style="margin-top: var(--gutter);">
+                <span id="gh-feedback-msg"></span>
+            </div>
+        </div>
+    </div>
+    <div id="drawer-overlay" class="drawer-overlay"></div>
+
+    <!-- Sticky Dashboard Header -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="nav-brand">ABHISHEK BENNY / CMS WORKSPACE</a>
+            </div>
+            <div class="nav-right">
+                <span id="save-status" class="status-indicator">All changes saved</span>
+                <span class="nav-spacer-gap" style="width: 25px;"></span>
+                <button id="gh-sync-btn" class="save-action-btn" style="background-color: transparent; border-color: var(--colour-copy); color: var(--colour-copy);">GITHUB SYNC</button>
+                <span class="nav-spacer-gap" style="width: 25px;"></span>
+                <button id="save-btn" class="save-action-btn">SAVE LAYOUT</button>
+                <span class="nav-spacer-gap" style="width: 25px;"></span>
+                <a href="index.html" class="social-link">← BACK TO SITE</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Split Panel Workspace -->
+    <main class="container workspace-container">
+        <div class="split-workspace">
+            
+            <!-- Left Panel: Project Creator -->
+            <section class="admin-pane">
+                <h2 class="pane-title">ADD NEW PROJECT</h2>
+                <form id="cms-form">
+                    <!-- Title -->
+                    <div class="form-group">
+                        <label for="p-title">PROJECT TITLE</label>
+                        <input type="text" id="p-title" required placeholder="e.g., PIFF, Malhara">
+                    </div>
+
+                    <div class="form-row">
+                        <!-- Folder Slug -->
+                        <div class="form-group">
+                            <label for="p-slug">FOLDER SLUG</label>
+                            <input type="text" id="p-slug" required placeholder="e.g., my-branding-project">
+                        </div>
+                        
+                        <!-- Category -->
+                        <div class="form-group">
+                            <label for="p-category">CATEGORY</label>
+                            <select id="p-category">
+                                <option value="design">DESIGN (WITH DETAILS)</option>
+                                <option value="art">ART (LIGHTBOX ONLY)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <!-- Grid Column -->
+                        <div class="form-group">
+                            <label for="p-column">INITIAL COLUMN</label>
+                            <select id="p-column">
+                                <option value="1">COLUMN 1</option>
+                                <option value="2">COLUMN 2</option>
+                                <option value="3">COLUMN 3</option>
+                                <option value="4">COLUMN 4</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Position -->
+                        <div class="form-group">
+                            <label for="p-position">INITIAL POSITION</label>
+                            <input type="number" id="p-position" value="1" min="1" required>
+                        </div>
+                    </div>
+
+                    <!-- Metadata Section (Toggled dynamically) -->
+                    <div id="metadata-fields">
+                        <div class="form-row">
+                            <!-- Date -->
+                            <div class="form-group">
+                                <label for="p-date">PROJECT DATE</label>
+                                <input type="text" id="p-date" placeholder="e.g., Jan 2022, 2025">
+                            </div>
+                            
+                            <!-- Timeline -->
+                            <div class="form-group">
+                                <label for="p-timeline">TIMELINE DURATION</label>
+                                <input type="text" id="p-timeline" placeholder="e.g., 2 Months">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <!-- Role -->
+                            <div class="form-group">
+                                <label for="p-role">YOUR ROLE</label>
+                                <input type="text" id="p-role" placeholder="e.g., Branding, Identity">
+                            </div>
+                            
+                            <!-- Collaborators -->
+                            <div class="form-group">
+                                <label for="p-collaborators">COLABORATORS</label>
+                                <input type="text" id="p-collaborators" placeholder="e.g., None, Jane Doe">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Images Dropzone -->
+                    <div class="form-group">
+                        <label>PROJECT IMAGES (DRAG & DROP)</label>
+                        <div id="image-dropzone" class="image-dropzone">
+                            <span class="dropzone-text">DRAG & DROP IMAGES HERE<br><span style="font-size: 8px; opacity: 0.5;">OR CLICK TO BROWSE</span></span>
+                            <input type="file" id="p-image-files" multiple accept="image/*" style="display:none;">
+                        </div>
+                        <div id="dropped-files-list" class="dropped-files-list"></div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="form-group">
+                        <label for="p-description">PROJECT DESCRIPTION</label>
+                        <textarea id="p-description" placeholder="Write story, concept, or description of your creative work here..."></textarea>
+                    </div>
+
+                    <button type="submit" id="create-btn" class="create-action-btn">CREATE & ADD TO GRID</button>
+                </form>
+
+                <!-- Feedback Area -->
+                <div id="feedback-box" class="feedback-box">
+                    <span id="feedback-message"></span>
+                </div>
+            </section>
+
+            <!-- Right Panel: Visual Columns -->
+            <section class="grid-pane">
+                <div class="columns-header-grid">
+                    <div class="column-header">COLUMN 1</div>
+                    <div class="column-header">COLUMN 2</div>
+                    <div class="column-header">COLUMN 3</div>
+                    <div class="column-header">COLUMN 4</div>
+                </div>
+                
+                <div class="columns drag-workspace">
+                    <!-- Column 1 bucket -->
+                    <div id="drag-col-1" class="drag-column-bucket" data-column="1">
+                        <!-- Loaded dynamically by reorder.js -->
+                    </div>
+                    
+                    <!-- Column 2 bucket -->
+                    <div id="drag-col-2" class="drag-column-bucket" data-column="2">
+                        <!-- Loaded dynamically by reorder.js -->
+                    </div>
+                    
+                    <!-- Column 3 bucket -->
+                    <div id="drag-col-3" class="drag-column-bucket" data-column="3">
+                        <!-- Loaded dynamically by reorder.js -->
+                    </div>
+                    
+                    <!-- Column 4 bucket -->
+                    <div id="drag-col-4" class="drag-column-bucket" data-column="4">
+                        <!-- Loaded dynamically by reorder.js -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Sticky Footer -->
+    <footer>
+        <div class="footer-container">
+            <span>Visual CMS System / 2026</span>
+            <span class="footer-note">DRAG CARDS VERTICALLY OR HORIZONTALLY TO EDIT THE HOME GRID ORDER</span>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/api-client.js"></script>
+    <script src="assets/js/reorder.js"></script>
+</body>
+</html>

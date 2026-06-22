@@ -1,0 +1,378 @@
+/* ==========================================================================
+   Creative Products CMS Stylesheet
+   Designed for Abhishek Benny Landing Page Grid CMS
+   ========================================================================== */
+
+/* Scraper inputs */
+.url-input-row {
+    display: flex;
+    gap: var(--gutter);
+    width: 100%;
+}
+
+.url-input-row input {
+    flex: 1;
+    font-family: 'Google Sans Flex', sans-serif;
+    font-size: var(--font-size);
+    border: 0.75px solid #ccc;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px;
+    outline: none;
+    text-transform: none; /* Keep URL normal casing */
+}
+
+.url-input-row input:focus {
+    border-color: #000000;
+}
+
+.fetch-action-btn {
+    background-color: #000000;
+    color: #ffffff;
+    border: 0.75px solid #000000;
+    padding: 0 var(--vertical);
+    font-family: 'Google Sans Flex', sans-serif;
+    font-size: var(--font-size);
+    font-weight: 500;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.2s var(--easing), color 0.2s var(--easing);
+}
+
+.fetch-action-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Scraper progress loader */
+.scraping-loader {
+    padding: var(--gutter) 0;
+    text-align: center;
+    border: 0.75px dashed #ccc;
+    margin-bottom: var(--gutter);
+    background-color: #f9f9f9;
+}
+
+.loader-text {
+    font-family: 'Google Sans Flex', sans-serif;
+    font-size: var(--font-size);
+    color: #000000;
+    letter-spacing: var(--font-kerning);
+    opacity: 0.7;
+    animation: pulse 1.5s infinite ease-in-out;
+    display: inline-block;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.4; }
+    50% { opacity: 1.0; }
+    100% { opacity: 0.4; }
+}
+
+/* Image picker thumbnails grid */
+.image-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--gutter);
+    max-height: 240px;
+    overflow-y: auto;
+    border: 0.75px solid #ddd;
+    padding: var(--gutter);
+    background-color: #f5f5f5;
+    margin-top: 4px;
+}
+
+/* Customize scrollbar for thumbnail picker */
+.image-picker-grid::-webkit-scrollbar {
+    width: 6px;
+}
+.image-picker-grid::-webkit-scrollbar-track {
+    background: #f5f5f5;
+}
+.image-picker-grid::-webkit-scrollbar-thumb {
+    background: #ccc;
+}
+.image-picker-grid::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+.image-thumbnail-wrapper {
+    position: relative;
+    aspect-ratio: 1;
+    cursor: pointer;
+    border: 1.5px solid transparent;
+    overflow: hidden;
+    background-color: #ffffff;
+    transition: border-color 0.2s var(--easing);
+}
+
+.image-thumbnail-wrapper:hover {
+    border-color: #888;
+}
+
+.image-thumbnail-wrapper.selected {
+    border-color: #000000;
+}
+
+.image-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Drag-and-drop items on the right workspace */
+.drag-item {
+    position: relative;
+    width: 100%;
+    margin-bottom: var(--gutter);
+    border: 0.75px solid #ddd;
+    background-color: #ffffff;
+    cursor: grab;
+    user-select: none;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.drag-item:active {
+    cursor: grabbing;
+}
+
+.drag-item img {
+    width: 100%;
+    display: block;
+    height: auto;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.drag-item.padded-media {
+    background-color: #ffffff;
+    padding: 30px var(--gutter) 40px var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 4 / 5;
+    box-sizing: border-box;
+}
+
+.drag-item.padded-media img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+/* ── Drag-item Size Variants ── */
+.drag-item.size-fill img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.drag-item.size-fit {
+    background-color: #ffffff;
+    padding: 24px var(--gutter) 32px var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 4 / 5;
+    box-sizing: border-box;
+}
+.drag-item.size-fit img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.drag-item.size-small {
+    background-color: #ffffff;
+    padding: 45px var(--gutter) 50px var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 4 / 5;
+    box-sizing: border-box;
+}
+.drag-item.size-small img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.drag-item.size-xs {
+    background-color: #ffffff;
+    padding: 55px var(--gutter) 60px var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 4 / 5;
+    box-sizing: border-box;
+}
+.drag-item.size-xs img {
+    max-height: 65%;
+    max-width: 65%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+
+/* ── Size Picker Buttons ── */
+.size-picker-group {
+    display: flex;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.size-picker-btn {
+    flex: 1;
+    padding: 7px 4px;
+    font-family: 'Google Sans Flex', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background-color: #f0f0f0;
+    color: #555;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.size-picker-btn:hover {
+    background-color: #e0e0e0;
+    color: #000;
+}
+
+.size-picker-btn.active {
+    background-color: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+.drag-item-title-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 6px var(--gutter);
+    box-sizing: border-box;
+    font-family: 'Google Sans Flex', sans-serif;
+    font-size: calc(var(--font-size) - 1px);
+    color: #000000;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-top: 0.75px solid #eee;
+    pointer-events: none;
+}
+
+/* Card removal button */
+.card-delete-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 18px;
+    height: 18px;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #ffffff;
+    border: 0.75px solid #ffffff;
+    border-radius: 50%;
+    font-family: 'Google Sans Flex', sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    line-height: 1;
+    transition: background-color 0.2s var(--easing), color 0.2s var(--easing);
+}
+
+.card-delete-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Paste Drop Zone & Image Preview Styles */
+.paste-drop-zone {
+    width: 100%;
+    height: 120px;
+    border: 0.75px dashed #333;
+    background-color: #050505;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    margin-top: 8px;
+    transition: border-color 0.2s var(--easing), background-color 0.2s var(--easing);
+}
+
+.paste-drop-zone:hover,
+.paste-drop-zone.drag-over {
+    border-color: #ffffff;
+    background-color: #080808;
+}
+
+.paste-instruction {
+    font-family: 'Google Sans Flex', sans-serif;
+    font-size: calc(var(--font-size) - 1px);
+    color: #888;
+    pointer-events: none;
+    text-transform: uppercase;
+}
+
+.image-preview-element {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: #000000;
+    z-index: 2;
+}
+
+/* Edit Form Cancel Button */
+.cancel-edit-btn {
+    background-color: transparent;
+    color: #555;
+    border: 0.75px solid #ccc;
+    font-family: 'Google Sans Flex', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: border-color 0.2s var(--easing), color 0.2s var(--easing);
+}
+
+.cancel-edit-btn:hover {
+    border-color: #000000;
+    color: #000000;
+}
+
+/* Selected product in CMS grid */
+.drag-item.selected {
+    border-color: #000000 !important;
+    box-shadow: 0 0 0 1.5px #000000;
+}
+
+/* Owned badge inside drag card item overlay positioning */
+.drag-item .owned-badge {
+    top: 6px;
+    left: 6px;
+    right: auto;
+    opacity: 1;
+}

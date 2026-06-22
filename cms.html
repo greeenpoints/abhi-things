@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" class="cms-html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products CMS - Abhi-things</title>
+    <meta name="description" content="Visual Dashboard to add products by crawling website URLs, selecting thumbnails, and reordering.">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/reorder.css">
+    <link rel="stylesheet" href="assets/css/cms.css">
+</head>
+<body class="cms-body">
+
+    <!-- GitHub Sync Settings Drawer -->
+    <div id="gh-drawer" class="settings-drawer">
+        <div class="drawer-header">
+            <h3>GITHUB SYNC INTEGRATION</h3>
+            <button id="close-drawer-btn" class="close-drawer-btn">&times;</button>
+        </div>
+        <div class="drawer-body">
+            <p class="drawer-desc">Enable this to sync your CMS directly with GitHub (ideal for deployment on GitHub Pages/Vercel).</p>
+            
+            <div class="form-group">
+                <label for="gh-owner">REPOSITORY OWNER / USERNAME</label>
+                <input type="text" id="gh-owner" placeholder="e.g., abhibny">
+            </div>
+            
+            <div class="form-group">
+                <label for="gh-repo">REPOSITORY NAME</label>
+                <input type="text" id="gh-repo" placeholder="e.g., abhi-X-2-main">
+            </div>
+
+            <div class="form-group">
+                <label for="gh-branch">BRANCH</label>
+                <input type="text" id="gh-branch" placeholder="main" value="main">
+            </div>
+
+            <div class="form-group">
+                <label for="gh-token">PERSONAL ACCESS TOKEN (PAT)</label>
+                <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+            </div>
+
+            <div class="drawer-actions">
+                <button id="test-gh-btn" class="fetch-action-btn" style="width: 100%; margin-bottom: 10px;">TEST CONNECTION</button>
+                <button id="save-gh-btn" class="create-action-btn" style="width: 100%; margin-top: 0; background-color: var(--colour-copy); color: var(--colour-bg); border-color: var(--colour-copy);">SAVE SETTINGS</button>
+                <button id="clear-gh-btn" class="cancel-edit-btn" style="width: 100%; margin-top: 10px; display: none;">DISCONNECT GITHUB</button>
+            </div>
+            
+            <div id="gh-feedback" class="feedback-box" style="margin-top: var(--gutter);">
+                <span id="gh-feedback-msg"></span>
+            </div>
+        </div>
+    </div>
+    <div id="drawer-overlay" class="drawer-overlay"></div>
+
+    <!-- Sticky Dashboard Header -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="nav-brand">ABHISHEK BENNY / PRODUCTS CMS</a>
+            </div>
+            <div class="nav-right">
+                <span id="save-status" class="status-indicator">All changes saved</span>
+                <span class="nav-spacer-gap" style="width: 25px;"></span>
+                <button id="gh-sync-btn" class="save-action-btn" style="background-color: transparent; border-color: var(--colour-copy); color: var(--colour-copy);">GITHUB SYNC</button>
+                <span class="nav-spacer-gap" style="width: 25px;"></span>
+                <button id="save-btn" class="save-action-btn">SAVE PRODUCTS</button>
+                <span class="nav-spacer-gap" style="width: 25px;"></span>
+                <a href="index.html" class="social-link">← BACK TO SITE</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Split Panel Workspace -->
+    <main class="container workspace-container">
+        <div class="split-workspace">
+            
+            <!-- Left Panel: Product Scraper Creator -->
+            <section class="admin-pane">
+                <h2 class="pane-title">ADD PRODUCT</h2>
+                
+                <!-- URL input group -->
+                <div class="form-group">
+                    <label for="p-url">AUTO-FETCH URL <span style="opacity:0.45; font-size:0.85em;">(OPTIONAL)</span></label>
+                    <div class="url-input-row">
+                        <input type="url" id="p-url" placeholder="Paste URL to auto-fill title + images (optional)">
+                        <button type="button" id="fetch-btn" class="fetch-action-btn">FETCH</button>
+                    </div>
+                </div>
+
+                <!-- Scraping Loader -->
+                <div id="scraping-loader" class="scraping-loader" style="display: none;">
+                    <span class="loader-text">SCRAPING WEBSITE IMAGES...</span>
+                </div>
+
+                <!-- Form for creating products -->
+                <form id="cms-form">
+                    <!-- Image Selection/Paste Group -->
+                    <div class="form-group" id="image-selection-container">
+                        <label for="p-image-url">PRODUCT IMAGE</label>
+                        <div class="url-input-row" style="margin-bottom: var(--gutter);">
+                            <input type="text" id="p-image-url" required placeholder="Paste direct image URL, local path, or Ctrl+V image file">
+                        </div>
+                        
+                        <!-- Clipboard Paste visual zone -->
+                        <div id="paste-drop-zone" class="paste-drop-zone">
+                            <span class="paste-instruction">CTRL+V TO PASTE IMAGE FILE</span>
+                            <img id="image-preview" class="image-preview-element" style="display: none;" alt="Preview">
+                        </div>
+                        
+                        <!-- Parsed image picker grid -->
+                        <div id="image-picker-group" style="display: none; margin-top: var(--gutter);">
+                            <span class="sub-label" style="display: block; margin-bottom: 4px; font-size: calc(var(--font-size) - 1px); opacity: 0.7;">OR SELECT SCRAPED IMAGE:</span>
+                            <div id="image-picker-grid" class="image-picker-grid">
+                                <!-- Populated dynamically with scraped images -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image Size Control -->
+                    <div class="form-group">
+                        <label>IMAGE SIZE</label>
+                        <div class="size-picker-group">
+                            <button type="button" class="size-picker-btn active" data-size="fill">▣ FILL</button>
+                            <button type="button" class="size-picker-btn" data-size="fit">⬜ FIT</button>
+                            <button type="button" class="size-picker-btn" data-size="small">◻ SMALL</button>
+                            <button type="button" class="size-picker-btn" data-size="xs">· XS</button>
+                        </div>
+                    </div>
+
+                    <!-- Title -->
+                    <div class="form-group">
+                        <label for="p-title">PRODUCT TITLE</label>
+                        <input type="text" id="p-title" required placeholder="e.g., Playdate, Steffany Blue">
+                    </div>
+
+                    <!-- Direct Redirect Link -->
+                    <div class="form-group">
+                        <label for="p-link">REDIRECT LINK</label>
+                        <input type="url" id="p-link" required placeholder="e.g., https://play.date/">
+                    </div>
+
+                    <!-- Ownership Toggle -->
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; font-size: var(--font-size);">
+                            <input type="checkbox" id="p-owned" style="width: auto; height: auto; margin: 0; accent-color: #000000; cursor: pointer;">
+                            I OWN THIS PRODUCT
+                        </label>
+                    </div>
+
+                    <div class="form-actions-row" style="display: flex; gap: var(--gutter); margin-top: 10px;">
+                        <button type="submit" id="create-btn" class="create-action-btn" style="flex: 1; margin-top: 0;" disabled>ADD TO GRID</button>
+                        <button type="button" id="cancel-edit-btn" class="cancel-edit-btn" style="display: none;">CANCEL</button>
+                    </div>
+                </form>
+
+                <!-- Feedback Area -->
+                <div id="feedback-box" class="feedback-box">
+                    <span id="feedback-message"></span>
+                </div>
+            </section>
+
+            <!-- Right Panel: Visual 5-Column Grid -->
+            <section class="grid-pane">
+                <div class="columns-header-grid">
+                    <div class="column-header">COLUMN 1</div>
+                    <div class="column-header">COLUMN 2</div>
+                    <div class="column-header">COLUMN 3</div>
+                    <div class="column-header">COLUMN 4</div>
+                    <div class="column-header">COLUMN 5</div>
+                </div>
+                
+                <div class="columns drag-workspace">
+                    <!-- Column 1 bucket -->
+                    <div id="drag-col-1" class="drag-column-bucket" data-column="1">
+                        <!-- Loaded dynamically by cms.js -->
+                    </div>
+                    
+                    <!-- Column 2 bucket -->
+                    <div id="drag-col-2" class="drag-column-bucket" data-column="2">
+                        <!-- Loaded dynamically by cms.js -->
+                    </div>
+                    
+                    <!-- Column 3 bucket -->
+                    <div id="drag-col-3" class="drag-column-bucket" data-column="3">
+                        <!-- Loaded dynamically by cms.js -->
+                    </div>
+                    
+                    <!-- Column 4 bucket -->
+                    <div id="drag-col-4" class="drag-column-bucket" data-column="4">
+                        <!-- Loaded dynamically by cms.js -->
+                    </div>
+                    
+                    <!-- Column 5 bucket -->
+                    <div id="drag-col-5" class="drag-column-bucket" data-column="5">
+                        <!-- Loaded dynamically by cms.js -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Sticky Footer -->
+    <footer>
+        <div class="footer-container">
+            <span>Products CMS System / 2026</span>
+            <span class="footer-note">DRAG CARDS TO REORDER. CLICK × ON CARDS TO DELETE. CLICK SAVE PRODUCTS TO COMMIT.</span>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/api-client.js"></script>
+    <script src="assets/js/cms.js"></script>
+</body>
+</html>

@@ -1,0 +1,673 @@
+/* ==========================================================================
+   Grid Reorder & CMS Upload Tool Stylesheet
+   ========================================================================== */
+
+.workspace-container {
+    padding-top: calc(var(--nav-height) + var(--vertical));
+    min-height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gutter);
+}
+
+/* Split Panel Layout */
+.split-workspace {
+    display: flex;
+    flex-direction: row;
+    gap: var(--gutter);
+    width: 100%;
+    flex: 1;
+}
+
+/* Left Side Panel: Admin Project Form */
+.admin-pane {
+    width: 320px;
+    max-width: 36vw;
+    flex-shrink: 0;
+    background-color: var(--colour-bg);
+    border-right: 0.75px solid var(--colour-copy);
+    padding-right: var(--gutter);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Hide scrollbar but keep scrollability */
+.admin-pane::-webkit-scrollbar {
+    width: 4px;
+}
+.admin-pane::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Right Side Panel: Visual Columns */
+.grid-pane {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gutter);
+    min-width: 0;
+}
+
+.pane-title {
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: var(--font-kerning);
+    border-bottom: 0.75px solid var(--colour-copy);
+    padding-bottom: 8px;
+    color: var(--colour-copy);
+    text-transform: uppercase;
+}
+
+/* CMS Form Elements */
+.form-group {
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: flex;
+    gap: var(--gutter);
+    min-width: 0;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.admin-pane label {
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 6px;
+    letter-spacing: 0.05em;
+    font-weight: 300;
+}
+
+.admin-pane input[type="text"],
+.admin-pane input[type="number"],
+.admin-pane select,
+.admin-pane textarea {
+    background-color: #ffffff;
+    border: 0.75px solid rgba(0, 0, 0, 0.25);
+    color: #000000;
+    padding: 8px 10px;
+    font-family: 'Google Sans Flex', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    outline: none;
+    text-transform: uppercase;
+    border-radius: 0px; /* Sharp technical edges */
+}
+
+.admin-pane input[type="text"]::placeholder,
+.admin-pane textarea::placeholder {
+    color: rgba(0, 0, 0, 0.35);
+}
+
+.admin-pane input[type="text"]:focus,
+.admin-pane input[type="number"]:focus,
+.admin-pane select:focus,
+.admin-pane textarea:focus {
+    border-color: #000000;
+}
+
+.admin-pane textarea {
+    resize: none;
+    height: 70px;
+    line-height: 1.35;
+    text-transform: none; /* Keep descriptions mixed case */
+}
+
+.create-action-btn {
+    background-color: #000000;
+    color: #ffffff;
+    border: 0.75px solid #000000;
+    font-family: 'Google Sans Flex', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    padding: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.2s var(--easing), color 0.2s var(--easing);
+    margin-top: 10px;
+}
+
+.create-action-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Feedback box for server notifications */
+.feedback-box {
+    margin-top: 10px;
+    padding: 12px;
+    border: 0.75px solid rgba(0, 0, 0, 0.15);
+    font-size: 11px;
+    line-height: 1.4;
+    color: rgba(0, 0, 0, 0.7);
+    display: none;
+}
+
+.feedback-box code {
+    font-family: 'Google Sans Flex', sans-serif;
+    color: #000000;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 2px 4px;
+}
+
+.feedback-box.success {
+    border-color: #22c55e;
+    color: #22c55e;
+    background-color: rgba(34, 197, 94, 0.05);
+}
+
+.feedback-box.error {
+    border-color: #ef4444;
+    color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.05);
+}
+
+/* Custom Image Drag and Drop dropzone styling */
+.image-dropzone {
+    border: 0.75px dashed rgba(255, 255, 255, 0.25);
+    background-color: rgba(255, 255, 255, 0.01);
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s var(--easing), background-color 0.2s var(--easing);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    margin-top: 4px;
+}
+
+.image-dropzone.drag-over {
+    border-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.dropzone-text {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+    user-select: none;
+}
+
+.dropped-files-list {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dropped-file-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 0.75px solid rgba(255, 255, 255, 0.1);
+    padding: 6px 10px;
+    font-size: 10px;
+    color: #ffffff;
+    font-family: 'Google Sans Flex', sans-serif;
+}
+
+.dropped-file-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.dropped-file-preview {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    border: 0.75px solid rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+}
+
+.dropped-file-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.remove-file-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: 'Google Sans Flex', sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    transition: color 0.2s var(--easing);
+    padding: 0 4px;
+}
+
+.remove-file-btn:hover {
+    color: #ef4444;
+}
+
+/* Grid representation headers */
+.columns-header-grid {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    padding: 0;
+    gap: var(--gutter);
+}
+
+.column-header {
+    flex: 1;
+    font-size: var(--font-size);
+    color: rgba(0, 0, 0, 0.5);
+    letter-spacing: var(--font-kerning);
+    text-align: center;
+    border-bottom: 0.75px solid rgba(0, 0, 0, 0.15);
+    padding-bottom: 8px;
+    user-select: none;
+}
+
+.drag-workspace {
+    display: flex;
+    flex-direction: row;
+    gap: var(--gutter);
+    width: 100%;
+    flex: 1;
+    align-items: flex-start;
+    padding-bottom: var(--vertical);
+}
+
+/* Droppable Column Buckets */
+.drag-column-bucket {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gutter);
+    min-height: 200px;
+    background-color: rgba(0, 0, 0, 0.01);
+    border: 0.75px dashed rgba(0, 0, 0, 0.1);
+    padding: var(--gutter);
+    transition: background-color 0.2s var(--easing), border-color 0.2s var(--easing);
+}
+
+/* Drag Over Highlight States */
+.drag-column-bucket.drag-over {
+    background-color: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Grabable Card Item representation */
+.drag-card-item {
+    position: relative;
+    background-color: #f9f9f9;
+    border: 0.75px solid rgba(0, 0, 0, 0.1);
+    padding: var(--gutter);
+    cursor: grab;
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    transition: opacity 0.2s var(--easing), border-color 0.2s var(--easing);
+}
+
+.drag-card-item:hover {
+    border-color: rgba(0, 0, 0, 0.4);
+}
+
+/* While active dragging in-air */
+.drag-card-item.dragging {
+    opacity: 0.35;
+    border-color: rgba(0, 0, 0, 0.6);
+    cursor: grabbing;
+}
+
+.drag-card-thumb {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border: 0.75px solid rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    pointer-events: none;
+}
+
+.drag-card-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    pointer-events: none;
+    flex: 1;
+}
+
+.drag-card-title {
+    font-size: var(--font-size);
+    color: #000000;
+    font-weight: 300;
+    letter-spacing: var(--font-kerning);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.drag-card-meta {
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.5);
+    letter-spacing: var(--font-kerning);
+}
+
+/* Save Actions button */
+.save-action-btn {
+    background-color: #000000;
+    color: #ffffff;
+    border: 0.75px solid #000000;
+    font-family: 'Google Sans Flex', sans-serif;
+    font-size: var(--font-size);
+    font-weight: 300;
+    padding: 3px 12px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.2s var(--easing), color 0.2s var(--easing), border-color 0.2s var(--easing);
+}
+
+.save-action-btn:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.save-action-btn.saving {
+    background-color: #555555 !important;
+    border-color: #555555 !important;
+    color: #ffffff !important;
+    cursor: not-allowed;
+}
+
+.save-action-btn.success {
+    background-color: #22c55e !important;
+    border-color: #22c55e !important;
+    color: #ffffff !important;
+}
+
+/* Unsaved state alert */
+.status-indicator {
+    font-size: var(--font-size);
+    color: rgba(0, 0, 0, 0.5);
+    letter-spacing: var(--font-kerning);
+    text-transform: uppercase;
+    transition: color 0.2s var(--easing);
+}
+
+.status-indicator.unsaved {
+    color: #f59e0b;
+    animation: flashIndicator 1.5s infinite var(--easing);
+}
+
+.footer-note {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 11px;
+}
+
+@keyframes flashIndicator {
+    0% { opacity: 0.5; }
+    50% { opacity: 1.0; }
+    100% { opacity: 0.5; }
+}
+
+/* Responsive constraints */
+/* Bootstrap breakpoints: xs <576, sm 576-767, md 768-991, lg 992-1199, xl 1200-1399, xxl 1400+ */
+
+@media (max-width: 1199.98px) {
+    .workspace-container {
+        padding-top: calc((var(--nav-height) * 2) + var(--vertical));
+    }
+
+    .split-workspace {
+        flex-direction: column;
+        gap: var(--vertical);
+    }
+
+    .admin-pane {
+        width: 100%;
+        max-width: none;
+        height: auto;
+        max-height: none;
+        overflow-y: visible;
+        border-right: none;
+        border-bottom: 0.75px solid #ffffff;
+        padding-right: 0;
+        padding-bottom: var(--vertical);
+    }
+
+    .grid-pane {
+        height: auto;
+        min-height: 60vh;
+        overflow: visible;
+    }
+
+    .drag-workspace {
+        height: auto;
+        min-height: 0;
+    }
+
+    .drag-column-bucket {
+        max-height: 70vh;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .columns-header-grid,
+    .drag-workspace {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .drag-column-bucket {
+        min-height: 260px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .split-workspace {
+        flex-direction: column;
+        gap: var(--vertical);
+    }
+    
+    .admin-pane {
+        width: 100%;
+        border-right: none;
+        border-bottom: 0.75px solid #ffffff;
+        padding-right: 0;
+        padding-bottom: var(--vertical);
+        height: auto;
+        overflow-y: visible;
+    }
+    
+    .grid-pane {
+        height: auto;
+        overflow: visible;
+    }
+
+    .columns-header-grid {
+        display: none;
+    }
+    
+    .drag-workspace {
+        flex-direction: column;
+        display: flex;
+        gap: var(--vertical);
+    }
+    
+    .drag-column-bucket {
+        min-height: 300px;
+        max-height: none;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .workspace-container {
+        padding-top: calc((var(--nav-height) * 3) + var(--vertical));
+    }
+
+    .drag-card-item {
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .drag-card-thumb {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+/* ── GitHub Sync Settings Drawer ── */
+.settings-drawer {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 350px;
+    max-width: 85vw;
+    height: 100vh;
+    background-color: var(--colour-bg);
+    border-left: 0.75px solid var(--colour-copy);
+    z-index: 3000;
+    transition: right 0.3s ease-in-out;
+    padding: var(--vertical) var(--gutter);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-drawer.open {
+    right: 0;
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.75px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 15px;
+    margin-bottom: var(--vertical);
+}
+
+.drawer-header h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: var(--font-kerning);
+    text-transform: uppercase;
+}
+
+.close-drawer-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    color: var(--colour-copy);
+}
+
+.drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.drawer-desc {
+    font-size: 11px;
+    line-height: 1.4;
+    opacity: 0.7;
+    margin-bottom: var(--vertical);
+}
+
+.drawer-actions {
+    margin-top: auto;
+    padding-top: var(--vertical);
+}
+
+/* Settings Overlay */
+.drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: 2900;
+    display: none;
+    backdrop-filter: blur(1px);
+}
+
+.drawer-overlay.active {
+    display: block;
+}
+
+/* ── Independent Pane Scrolling (Dashboard Mode) ── */
+@media (min-width: 992px) {
+    html.cms-html {
+        height: 100%;
+        overflow: hidden;
+    }
+
+    body.cms-body {
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    body.cms-body .top-nav {
+        position: relative !important;
+        flex-shrink: 0;
+    }
+
+    body.cms-body footer {
+        position: relative !important;
+        flex-shrink: 0;
+    }
+
+    body.cms-body .workspace-container {
+        flex: 1 1 0;
+        min-height: 0 !important;
+        padding-top: var(--vertical);
+        padding-bottom: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    body.cms-body .split-workspace {
+        flex: 1 1 0;
+        min-height: 0 !important;
+        overflow: hidden;
+        align-items: stretch;
+    }
+
+    body.cms-body .admin-pane {
+        overflow-y: auto;
+        overflow-x: hidden;
+        min-height: 0;
+        padding-bottom: 60px;
+        align-self: stretch;
+    }
+
+    body.cms-body .grid-pane {
+        overflow-y: auto;
+        overflow-x: hidden;
+        min-height: 0;
+        padding-bottom: 60px;
+        align-self: stretch;
+    }
+}
+
