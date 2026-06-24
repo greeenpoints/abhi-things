@@ -38,7 +38,7 @@ const API = {
         if (this.isGitConfigured()) {
             return this.fetchFromGit("products.json");
         }
-        const response = await fetch("products.json");
+        const response = await fetch("products.json?t=" + Date.now());
         if (!response.ok) throw new Error("Failed to fetch products.json");
         return response.json();
     },
@@ -77,7 +77,7 @@ const API = {
         if (this.isGitConfigured()) {
             return this.fetchFromGit("projects.json");
         }
-        const response = await fetch("projects.json");
+        const response = await fetch("projects.json?t=" + Date.now());
         if (!response.ok) throw new Error("Failed to fetch projects.json");
         return response.json();
     },
@@ -87,7 +87,7 @@ const API = {
         if (this.isGitConfigured()) {
             return this.fetchFromGit(`projects/${slug}/metadata.json`);
         }
-        const response = await fetch(`projects/${slug}/metadata.json`);
+        const response = await fetch(`projects/${slug}/metadata.json?t=${Date.now()}`);
         if (!response.ok) throw new Error(`Failed to fetch metadata for ${slug}`);
         return response.json();
     },

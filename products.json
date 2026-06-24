@@ -9,22 +9,13 @@
     "position": 1
   },
   {
-    "title": "Fellow Carter Wide Mug",
-    "image": "assets/images/products/fellow-carter-wide-mug_1782108461.png",
-    "link": "https://jp.kurasu.kyoto/products/fellow-carter-wide-mug",
-    "size": "fill",
-    "owned": false,
+    "title": "LAMY safari Fountain Pen vista",
+    "image": "assets/images/products/lamy-safari-fountain-pen-vista_1782107745.png",
+    "link": "https://www.amazon.co.jp/-/en/Lamy-Safari-Vista-Fountain-Pen/dp/B0002T406O",
+    "size": "small",
+    "owned": true,
     "column": 1,
     "position": 2
-  },
-  {
-    "title": "GREJSIMOJS LED decoration lighting, floor, giraffe/yellow battery-operated",
-    "image": "assets/images/products/grejsimojs-led-decoration-lighting-floor-giraffe-yellow-battery-operated_1782075673.jpg",
-    "link": "https://www.ikea.com/jp/en/p/grejsimojs-led-decoration-lighting-floor-giraffe-yellow-battery-operated-20602038/",
-    "size": "small",
-    "owned": false,
-    "column": 1,
-    "position": 3
   },
   {
     "title": "WORK LOUDER\u00ae",
@@ -33,13 +24,22 @@
     "size": "small",
     "owned": false,
     "column": 1,
+    "position": 3
+  },
+  {
+    "title": "Ambit Cork Tray",
+    "image": "assets/images/products/ambit-cork-tray_1782075923.jpg",
+    "link": "https://www.hermanmiller.com/en_lac/products/accessories/desk-accessories/ambit-cork-tray/",
+    "size": "small",
+    "owned": false,
+    "column": 1,
     "position": 4
   },
   {
-    "title": "Dyson Supersonic r\u2122\u30d8\u30a2\u30c9\u30e9\u30a4\u30e4\u30fc \u30bb\u30e9\u30df\u30c3\u30af\u30d4\u30f3\u30af (HD17 VLP) | \u30d8\u30a2\u30b1\u30a2    | \u30c0\u30a4\u30bd\u30f3\u516c\u5f0f",
-    "image": "assets/images/products/dyson-supersonic-r-hd17-vlp_1782075671.jpg",
-    "link": "https://www.dyson.co.jp/hair-care/hair-dryers/supersonic-r/ceramic-pink?utm_id=sa_23584757002__&utm_term=&utm_source=google&utm_medium=cpc&utm_campaign=hc_na_always-on&utm_content=do_na_0x0_multiple|hc-google-pmax-na&gclsrc=aw.ds&&utm_source=google&utm_medium=cpc&utm_campaign=jp_ja_hc_haircare-range_always-on_hc-range_do_text_brand_p-max_b2c_google&utm_content=jp_ja_hc_haircare-range_always-on_hc-range_do_text_brand_p-max_b2c_google&utm_term=&gad_source=1&gad_campaignid=23580161990&gbraid=0AAAAAqnw2ZXefvWFJ4Cvfgzv4wg57pS91&gclid=EAIaIQobChMI1tXFxLqYlQMVc14PAh16OBhYEAQYAiABEgK4evD_BwE",
-    "size": "fit",
+    "title": "HiDock H1 Lite",
+    "image": "assets/images/products/hidock-h1-lite_1782116524.jpg",
+    "link": "https://www.hidock.com/products/hidock-h1-lite?utm_source=H1L&utm_medium=Yanko+Design&utm_campaign=HiDock+H1+Lite",
+    "size": "small",
     "owned": false,
     "column": 1,
     "position": 5
@@ -61,6 +61,24 @@
     "owned": false,
     "column": 1,
     "position": 7
+  },
+  {
+    "title": "Anker Nano Charger (100W) with USB-C & USB-C \u30b1\u30fc\u30d6\u30eb | \u5145\u96fb\u5668\u306e\u88fd\u54c1\u60c5\u5831  |  Anker Japan \u516c\u5f0f\u30aa\u30f3\u30e9\u30a4\u30f3\u30b9\u30c8\u30a2",
+    "image": "assets/images/products/anker-nano-charger-100w-with-usb-c-usb-c-anker-japan_1782119523.png",
+    "link": "https://www.ankerjapan.com/products/b2679",
+    "size": "small",
+    "owned": true,
+    "column": 1,
+    "position": 8
+  },
+  {
+    "title": "Panthella 320 table lamp, beige, \u00d8 32 cm, E14",
+    "image": "assets/images/products/panthella-320-table-lamp-beige-32-cm-e14_1782302846.jpg",
+    "link": "https://www.lampmasters.co.uk/p/panthella-320-table-lamp-beige-o-32-cm-e14-louis-poulsen-10046821.html",
+    "size": "fit",
+    "owned": false,
+    "column": 1,
+    "position": 9
   },
   {
     "title": "Steffany Blue Watch",
@@ -102,7 +120,7 @@
     "title": "field bottle",
     "image": "assets/images/products/field-bottle_1782075672.webp",
     "link": "https://teenage.engineering/store/field-bottle-black",
-    "size": "fill",
+    "size": "fit",
     "owned": false,
     "column": 2,
     "position": 5
@@ -126,6 +144,24 @@
     "position": 7
   },
   {
+    "title": "PH 5 | Louis Poulsen",
+    "image": "assets/images/products/ph-5-louis-poulsen_1782302847.webp",
+    "link": "https://www.louispoulsen.com/ja-jp/catalog/private/pendants/ph-5-mini?v=91707-5741934346-02&gad_campaignid=23376838470",
+    "size": "small",
+    "owned": false,
+    "column": 2,
+    "position": 8
+  },
+  {
+    "title": "String Furniture",
+    "image": "assets/images/products/string-furniture_1782302847.png",
+    "link": "https://www.stringfurniture.com/en/series/system/combinations/living-room/bundle_l_h_04_12",
+    "size": "fit",
+    "owned": false,
+    "column": 2,
+    "position": 9
+  },
+  {
     "title": "rabbit r1",
     "image": "assets/images/products/rabbit-r1_1782107745.png",
     "link": "https://www.rabbit.tech/rabbit-r1?srsltid=AfmBOorEzTOdkRKUyKH3kP7uPXkRLVBTW5t48PTQnzSLXzt6RmwRZ5Nk",
@@ -135,19 +171,19 @@
     "position": 1
   },
   {
-    "title": "LAMY safari Fountain Pen vista",
-    "image": "assets/images/products/lamy-safari-fountain-pen-vista_1782107745.png",
-    "link": "https://www.amazon.co.jp/-/en/Lamy-Safari-Vista-Fountain-Pen/dp/B0002T406O",
-    "size": "small",
-    "owned": true,
-    "column": 3,
-    "position": 2
-  },
-  {
     "title": "Smith Stacking Footed Soup Mug",
     "image": "assets/images/products/smith-stacking-footed-soup-mug_1782075672.png",
     "link": "https://chipsjapan-store.com/items/64f5861a708109002c2002b0",
     "size": "fit",
+    "owned": false,
+    "column": 3,
+    "position": 2
+  },
+  {
+    "title": "GREJSIMOJS LED decoration lighting, floor, giraffe/yellow battery-operated",
+    "image": "assets/images/products/grejsimojs-led-decoration-lighting-floor-giraffe-yellow-battery-operated_1782075673.jpg",
+    "link": "https://www.ikea.com/jp/en/p/grejsimojs-led-decoration-lighting-floor-giraffe-yellow-battery-operated-20602038/",
+    "size": "small",
     "owned": false,
     "column": 3,
     "position": 3
@@ -189,6 +225,24 @@
     "position": 7
   },
   {
+    "title": "Samsung 55 Inch 2024 The Serif QLED 4K TV",
+    "image": "assets/images/products/samsung-55-inch-2024-the-serif-qled-4k-tv_1782302847.png",
+    "link": "https://www.samsung.com/uk/lifestyle-tvs/the-serif/ls01d-55-inch-the-serif-white-qe55ls01dauxxu/",
+    "size": "fit",
+    "owned": false,
+    "column": 3,
+    "position": 8
+  },
+  {
+    "title": "Panton Chair",
+    "image": "assets/images/products/panton-chair_1782302847.png",
+    "link": "https://www.vitra.com/ja-jp/product/panton-chair",
+    "size": "xs",
+    "owned": false,
+    "column": 3,
+    "position": 9
+  },
+  {
     "title": "Table lamp Nessino Artemide",
     "image": "assets/images/products/table-lamp-nessino-artemide_1782116524.png",
     "link": "https://www.artemide.com/en/subfamily/23264/nessino",
@@ -198,13 +252,22 @@
     "position": 1
   },
   {
+    "title": "Fellow Carter Wide Mug",
+    "image": "assets/images/products/fellow-carter-wide-mug_1782108461.png",
+    "link": "https://jp.kurasu.kyoto/products/fellow-carter-wide-mug",
+    "size": "fill",
+    "owned": false,
+    "column": 4,
+    "position": 2
+  },
+  {
     "title": "Loka Chai Maker",
     "image": "assets/images/products/loka-chai-maker_1782107745.png",
     "link": "https://weareloka.com/products/loka-chai-maker",
     "size": "small",
     "owned": false,
     "column": 4,
-    "position": 2
+    "position": 3
   },
   {
     "title": "VARMBLIXT LED table/wall lamp",
@@ -213,7 +276,7 @@
     "size": "xs",
     "owned": false,
     "column": 4,
-    "position": 3
+    "position": 4
   },
   {
     "title": "Sony PS-LX3BT Bluetooth Record Player",
@@ -222,7 +285,7 @@
     "size": "small",
     "owned": false,
     "column": 4,
-    "position": 4
+    "position": 5
   },
   {
     "title": "CM\u201315 aluminum",
@@ -231,7 +294,7 @@
     "size": "fit",
     "owned": false,
     "column": 4,
-    "position": 5
+    "position": 6
   },
   {
     "title": "OE1 Storage Trolleys",
@@ -240,16 +303,25 @@
     "size": "fill",
     "owned": false,
     "column": 4,
-    "position": 6
+    "position": 7
   },
   {
     "title": "Capelli Stool",
     "image": "assets/images/products/capelli-stool_1782075923.jpg",
     "link": "https://www.hermanmiller.com/en_lac/products/seating/stools/capelli-stool/",
-    "size": "fill",
+    "size": "fit",
     "owned": false,
     "column": 4,
-    "position": 7
+    "position": 8
+  },
+  {
+    "title": "ikea TOBIAS",
+    "image": "assets/images/products/ikea-tobias_1782302847.jpg",
+    "link": "https://www.ikea.com/jp/ja/p/tobias-chair-brown-red-chrome-plated-70532590/",
+    "size": "xs",
+    "owned": false,
+    "column": 4,
+    "position": 9
   },
   {
     "title": "Fellow Ode Brew Grinder Gen2",
@@ -279,30 +351,57 @@
     "position": 3
   },
   {
-    "title": "Ambit Cork Tray",
-    "image": "assets/images/products/ambit-cork-tray_1782075923.jpg",
-    "link": "https://www.hermanmiller.com/en_lac/products/accessories/desk-accessories/ambit-cork-tray/",
-    "size": "fit",
-    "owned": false,
-    "column": 5,
-    "position": 4
-  },
-  {
-    "title": "HiDock H1 Lite",
-    "image": "assets/images/products/hidock-h1-lite_1782116524.jpg",
-    "link": "https://www.hidock.com/products/hidock-h1-lite?utm_source=H1L&utm_medium=Yanko+Design&utm_campaign=HiDock+H1+Lite",
-    "size": "small",
-    "owned": false,
-    "column": 5,
-    "position": 5
-  },
-  {
     "title": "HiDock P1 AI Voice Recorder",
     "image": "assets/images/products/hidock-p1-ai-voice-recorder_1782116524.jpg",
     "link": "https://www.hidock.com/products/hidock-p1-ai-voice-recorder",
     "size": "small",
     "owned": false,
     "column": 5,
+    "position": 4
+  },
+  {
+    "title": "SHARGE Pixel 140",
+    "image": "assets/images/products/sharge-pixel-140_1782119523.png",
+    "link": "https://sharge.com/products/pixel-100-140-charger?variant=47310497906939",
+    "size": "fill",
+    "owned": false,
+    "column": 5,
+    "position": 5
+  },
+  {
+    "title": "Dyson Supersonic r\u2122\u30d8\u30a2\u30c9\u30e9\u30a4\u30e4\u30fc \u30bb\u30e9\u30df\u30c3\u30af\u30d4\u30f3\u30af (HD17 VLP) | \u30d8\u30a2\u30b1\u30a2    | \u30c0\u30a4\u30bd\u30f3\u516c\u5f0f",
+    "image": "assets/images/products/dyson-supersonic-r-hd17-vlp_1782075671.jpg",
+    "link": "https://www.dyson.co.jp/hair-care/hair-dryers/supersonic-r/ceramic-pink?utm_id=sa_23584757002__&utm_term=&utm_source=google&utm_medium=cpc&utm_campaign=hc_na_always-on&utm_content=do_na_0x0_multiple|hc-google-pmax-na&gclsrc=aw.ds&&utm_source=google&utm_medium=cpc&utm_campaign=jp_ja_hc_haircare-range_always-on_hc-range_do_text_brand_p-max_b2c_google&utm_content=jp_ja_hc_haircare-range_always-on_hc-range_do_text_brand_p-max_b2c_google&utm_term=&gad_source=1&gad_campaignid=23580161990&gbraid=0AAAAAqnw2ZXefvWFJ4Cvfgzv4wg57pS91&gclid=EAIaIQobChMI1tXFxLqYlQMVc14PAh16OBhYEAQYAiABEgK4evD_BwE",
+    "size": "fit",
+    "owned": false,
+    "column": 5,
     "position": 6
+  },
+  {
+    "title": "Pila: Plug-and-power home batteries",
+    "image": "assets/images/products/pila-plug-and-power-home-batteries_1782302847.png",
+    "link": "https://www.pilaenergy.com/",
+    "size": "small",
+    "owned": false,
+    "column": 5,
+    "position": 7
+  },
+  {
+    "title": "AJ Mini Table Lamp Lamp Polished Steel",
+    "image": "assets/images/products/aj-mini-table-lamp-lamp-polished-steel_1782302847.jpg",
+    "link": "https://www.lampmasters.co.uk/p/aj-mini-table-lamp-lamp-polished-steel-louis-poulsen-6090311.html",
+    "size": "fit",
+    "owned": false,
+    "column": 5,
+    "position": 8
+  },
+  {
+    "title": "FR\u00d6SET / ikea",
+    "image": "assets/images/products/fr-set-ikea_1782302847.jpg",
+    "link": "https://www.ikea.com/jp/ja/p/froeset-easy-chair-red-stained-oak-veneer-90429605/?gad_campaignid=22525125490&gbraid=0AAAAADEVespLxoho1qPJfy7iFd9KGXx9J",
+    "size": "xs",
+    "owned": false,
+    "column": 5,
+    "position": 9
   }
 ]

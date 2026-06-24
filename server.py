@@ -38,6 +38,14 @@ class CMSHandler(http.server.SimpleHTTPRequestHandler):
         rel_path = os.path.relpath(path, os.getcwd())
         return os.path.join(BASE_DIR, rel_path)
 
+    def end_headers(self):
+        # Prevent browser caching for JSON data files so CMS changes appear immediately
+        if self.path.endswith('.json') or '.json?' in self.path:
+            self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+            self.send_header('Pragma', 'no-cache')
+            self.send_header('Expires', '0')
+        super().end_headers()
+
     def do_POST(self):
         if self.path == '/api/save-layout':
             self.handle_save_layout()
