@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const col3Bucket = document.getElementById("drag-col-3");
     const col4Bucket = document.getElementById("drag-col-4");
     const col5Bucket = document.getElementById("drag-col-5");
+    const col6Bucket = document.getElementById("drag-col-6");
 
     // Edit Mode State Tracker
     let editingProductCard = null;
@@ -328,7 +329,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 col2Bucket.querySelectorAll(".drag-item").length,
                 col3Bucket.querySelectorAll(".drag-item").length,
                 col4Bucket.querySelectorAll(".drag-item").length,
-                col5Bucket.querySelectorAll(".drag-item").length
+                col5Bucket.querySelectorAll(".drag-item").length,
+                col6Bucket.querySelectorAll(".drag-item").length
             ];
             const minCount = Math.min(...counts);
             const colIndex = counts.indexOf(minCount) + 1;
@@ -372,8 +374,8 @@ document.addEventListener("DOMContentLoaded", () => {
             // Standardize format (add column/position if missing)
             allProducts.forEach((prod, index) => {
                 if (prod.column === undefined) {
-                    prod.column = (index % 5) + 1;
-                    prod.position = Math.floor(index / 5) + 1;
+                    prod.column = (index % 6) + 1;
+                    prod.position = Math.floor(index / 6) + 1;
                 }
             });
 
@@ -394,12 +396,13 @@ document.addEventListener("DOMContentLoaded", () => {
         col3Bucket.innerHTML = "";
         col4Bucket.innerHTML = "";
         col5Bucket.innerHTML = "";
+        col6Bucket.innerHTML = "";
 
-        const cols = [[], [], [], [], []];
+        const cols = [[], [], [], [], [], []];
 
         allProducts.forEach(prod => {
             let col = parseInt(prod.column);
-            if (isNaN(col) || col < 1 || col > 5) {
+            if (isNaN(col) || col < 1 || col > 6) {
                 col = 1;
             }
             cols[col - 1].push(prod);
@@ -416,7 +419,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Render card items into columns
         cols.forEach((list, index) => {
-            const bucket = [col1Bucket, col2Bucket, col3Bucket, col4Bucket, col5Bucket][index];
+            const bucket = [col1Bucket, col2Bucket, col3Bucket, col4Bucket, col5Bucket, col6Bucket][index];
             list.forEach(prod => {
                 const card = document.createElement("div");
                 card.className = "drag-item";
@@ -562,7 +565,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Update internal columns and positions after dragging or deleting
     function updateCardsMetadata() {
         const payload = [];
-        [col1Bucket, col2Bucket, col3Bucket, col4Bucket, col5Bucket].forEach((bucket, index) => {
+        [col1Bucket, col2Bucket, col3Bucket, col4Bucket, col5Bucket, col6Bucket].forEach((bucket, index) => {
             const colIndex = index + 1;
             const cards = bucket.querySelectorAll(".drag-item");
             cards.forEach((card, posIndex) => {

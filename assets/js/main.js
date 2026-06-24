@@ -4,13 +4,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const masonryGrid = document.getElementById("masonry-grid");
     let lastColumnCount = 0;
 
+    // Maximum columns in the saved layout (matches CMS)
+    const MAX_COLUMNS = 6;
+
     // Dynamic Viewport Breakpoint Resolver
     function getDesiredColumns() {
         const width = window.innerWidth;
-        if (width >= 1200) return 5; // 5 columns on desktop
+        if (width >= 1400) return 6; // 6 columns on large desktop
+        if (width >= 1200) return 5;
         if (width >= 992) return 4;
         if (width >= 768) return 3;
-        if (width >= 576) return 2;
+        if (width >= 480) return 2;
         return 1;
     }
 
@@ -51,20 +55,20 @@ document.addEventListener("DOMContentLoaded", () => {
         // Distribute product items across the active N columns
         allProducts.forEach((product, index) => {
             let col = parseInt(product.column);
-            if (isNaN(col) || col < 1 || col > 5) {
-                col = (index % 5) + 1;
+            if (isNaN(col) || col < 1 || col > MAX_COLUMNS) {
+                col = (index % MAX_COLUMNS) + 1;
             }
             
-            // Map saved 5-column layout into the active responsive column count.
-            let targetColIndex = N === 5 ? col - 1 : (index % N);
+            // Map saved 6-column layout into the active responsive column count.
+            let targetColIndex = N === MAX_COLUMNS ? col - 1 : (index % N);
             
             columnsLists[targetColIndex].push(product);
         });
 
         // Sort items in each column by saved position on desktop
         const sortByPosition = (a, b) => {
-            if (N < 5) {
-                return 0; // maintain source order
+            if (N < MAX_COLUMNS) {
+                return 0; // maintain source order on smaller screens
             }
             const posA = a.position !== undefined ? parseInt(a.position) : 999;
             const posB = b.position !== undefined ? parseInt(b.position) : 999;
